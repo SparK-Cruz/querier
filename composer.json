@@ -23,5 +23,8 @@
             "Test\\": "test/"
         }
     },
-    "license": "Anarchy"
+    "license": "Anarchy",
+    "scripts":{
+        "test": "phpunit test"
+    }
 }
