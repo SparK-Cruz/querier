@@ -1,0 +1,27 @@
+{
+    "name": "sparkcrz/querier",
+    "description": "Simple GraphQL Query Builder",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Spark Cruz",
+            "email": "spark.crz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.3@dev"
+    },
+    "autoload":{
+        "psr-4": {
+            "Querier\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4": {
+            "Test\\": "test/"
+        }
+    },
+    "license": "Anarchy"
+}
