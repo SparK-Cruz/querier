@@ -43,4 +43,19 @@ class QueryTest extends TestCase {
 
         $this->assertEquals($expected, $result);
     }
+
+    public function testToStringWithTypedNode() {
+        $expected = 'query{node(id:"abc"){... on SubType{subTypeCode}}}';
+
+        $result = (new Query())
+            ->want((new Field('node'))
+                ->with('id', 'abc')
+                ->want((new Field('... on SubType'))
+                    ->want('subTypeCode')
+                )
+            )
+            ->toString();
+
+        $this->assertEquals($expected, $result);
+    }
 }
