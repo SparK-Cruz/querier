@@ -1,23 +1,20 @@
 <?php
 namespace Querier;
 
-class Field {
+class Query {
     use Fields;
     use Arguments;
 
     private $name;
 
-    /**
-     * @param string $name Field name
-     * @param array $arguments (optional) Associative array for filtering
-     */
-    public function __construct($name, $arguments = []) {
-        $this->name = $name;
+    public function __construct($operationName = null, $arguments = []) {
+        $this->name = $operationName;
         $this->arguments = $arguments;
     }
 
     public function toString() {
-        return $this->name
+        return 'query'
+            . self::wrap(' ', $this->name)
             . self::wrap('(', $this->argumentsToString(), ')')
             . $this->fieldsToString();
     }
