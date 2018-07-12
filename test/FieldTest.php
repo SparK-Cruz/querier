@@ -2,6 +2,7 @@
 namespace Test;
 
 use Querier\Field;
+use Querier\Raw;
 
 class FieldTest extends TestCase {
     public function testToString() {
@@ -36,6 +37,17 @@ class FieldTest extends TestCase {
                     ->want('y', 'z')
                 )
             )
+            ->toString();
+
+        $this->assertEquals($expected, $result);
+    }
+    public function testToStringWithRawProperties() {
+        $expected = 'test(foo:{bar:BAZ,other:50,text:"ok"}){x}';
+
+        $foo = ['bar' => new Raw('BAZ'), 'other' => 50, 'text' => 'ok'];
+        $result = (new Field('test'))
+            ->with('foo', $foo)
+            ->want('x')
             ->toString();
 
         $this->assertEquals($expected, $result);
